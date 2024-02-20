@@ -1,6 +1,14 @@
-import { Button, Text, View } from 'react-native'
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  SafeAreaView,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native'
 
-import { useAuth } from '../contexts/auth'
+import { Button } from '@/components/button'
+import { Input } from '@/components/input'
+import { useAuth } from '@/contexts/auth'
 
 export function SignIn() {
   const { signIn } = useAuth()
@@ -18,17 +26,26 @@ export function SignIn() {
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 32,
-      }}
-    >
-      <Text>Sign in page</Text>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+        <SafeAreaView
+          style={{
+            flex: 1,
+          }}
+        >
+          <View
+            style={{ flex: 1, padding: 24, justifyContent: 'space-between' }}
+          >
+            <Input
+              placeholder="URL"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
 
-      <Button title="Sign in" onPress={handleSignIn} />
-    </View>
+            <Button onPress={handleSignIn}>Import</Button>
+          </View>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   )
 }

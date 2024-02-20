@@ -1,3 +1,6 @@
+import { StatusBar } from 'expo-status-bar'
+
+import { colors } from '@/styles/colors'
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 
 import { AppProvider } from './src/contexts'
@@ -5,18 +8,22 @@ import { Routes } from './src/routes'
 
 export default function App() {
   return (
-    <AppProvider>
+    <>
       <NavigationContainer
         theme={{
           ...DefaultTheme,
           colors: {
             ...DefaultTheme.colors,
-            background: 'transparent',
+            background: colors.gray[900],
           },
         }}
       >
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </NavigationContainer>
-    </AppProvider>
+
+      <StatusBar style="light" />
+    </>
   )
 }

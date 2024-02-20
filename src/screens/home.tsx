@@ -1,6 +1,7 @@
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
-import { useAuth } from '../contexts/auth'
+import { Button } from '@/components/button'
+import { useAuth } from '@/contexts/auth'
 
 export function Home() {
   const { signOut } = useAuth()
@@ -20,7 +21,9 @@ export function Home() {
     >
       <Text>Home page</Text>
 
-      <Button title="Sign out" onPress={handleSignOut} color="red" />
+      <Button onPress={handleSignOut} variant="destructive">
+        Sign out
+      </Button>
     </View>
   )
 }
