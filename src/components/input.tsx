@@ -39,7 +39,7 @@ export function Input({ isErrored, style, ...props }: InputProps) {
           height: 56,
           borderRadius: 12,
           backgroundColor: colors.gray[800],
-          borderWidth: 1,
+          borderWidth: 2,
           borderColor: colors.gray[800],
           paddingHorizontal: 16,
           fontSize: 16,

@@ -2,6 +2,7 @@ import { Text, View } from 'react-native'
 
 import { Button } from '@/components/button'
 import { useAuth } from '@/contexts/auth'
+import { colors } from '@/styles/colors'
 
 export function Home() {
   const { signOut } = useAuth()
@@ -19,7 +20,7 @@ export function Home() {
         gap: 32,
       }}
     >
-      <Text>Home page</Text>
+      <Text style={{ color: colors.gray[50] }}>Home page</Text>
 
       <Button onPress={handleSignOut} variant="destructive">
         Sign out
