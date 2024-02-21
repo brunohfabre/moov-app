@@ -1,4 +1,4 @@
-import { Text, TextInput } from 'react-native'
+import { Text, TextInput, View } from 'react-native'
 
 import { StatusBar } from 'expo-status-bar'
 
@@ -24,7 +24,7 @@ textInputComponent.defaultProps = {
 
 export default function App() {
   return (
-    <>
+    <View style={{ flex: 1, backgroundColor: colors.gray[900] }}>
       <NavigationContainer
         theme={{
           ...DefaultTheme,
@@ -41,6 +41,6 @@ export default function App() {
       </NavigationContainer>
 
       <StatusBar style="light" />
-    </>
+    </View>
   )
 }

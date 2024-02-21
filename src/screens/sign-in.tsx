@@ -74,7 +74,6 @@ export function SignIn() {
                 autoCapitalize="none"
                 autoCorrect={false}
                 isErrored={!!error}
-                value={urlInput}
                 onChangeText={setUrlInput}
               />
 
