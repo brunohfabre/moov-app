@@ -6,25 +6,19 @@ import {
   useState,
 } from 'react'
 
+import * as FileSystem from 'expo-file-system'
 import * as SecureStore from 'expo-secure-store'
 import * as SplashScreen from 'expo-splash-screen'
 
-type User = {
-  id: string
-  name: string
-  email: string
-}
-
 type Session = {
-  token: string
-  user: User
+  isSigned: boolean
 }
 
 interface AuthContextData {
   isLoading: boolean
   session: Session | null
 
-  signIn: (data: Session) => void
+  signIn: () => void
   signOut: () => void
 }
 
@@ -51,13 +45,21 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
     loadPersistedData()
   }, [])
 
-  async function signIn(data: Session) {
+  async function signIn() {
+    const data = {
+      isSigned: true,
+    }
+
     await SecureStore.setItemAsync('session', JSON.stringify(data))
+
     setSession(data)
   }
 
   async function signOut() {
+    await FileSystem.deleteAsync(FileSystem.documentDirectory + 'items.json')
+
     await SecureStore.deleteItemAsync('session')
+
     setSession(null)
   }
 
